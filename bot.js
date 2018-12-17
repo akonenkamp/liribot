@@ -8,21 +8,34 @@ var fs = require('fs');
 switch (action) {
 
     case "spotify-this-song":
-    spotify(inputs);
-    break;
+        spotify(input);
+        break;
 
     case "movie-this":
-    omdb(inputs);
-    break;
+        omdb(input);
+        break;
 
     case "concert-this":
-    bandsintown(input);
-    break;
+        bandsintown(input);
+        break;
 
     case "do-what-it-says":
-    request(inputs);
-    break;
+        request(input);
+        break;
 };
 
+function spotify(input) {
+    var spotify = new Spotify(keys.spotify);
+    if (!input) {
+        input = "the sign";
+    }
 
+    spotify.search({ type: 'track', query: input}, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
 
+        console.log(data);
+    });
+
+}
