@@ -1,15 +1,5 @@
-var Spotify = require('node-spotify-api');
+require("dotenv").config();
+var spotify = new Spotify(keys.spotify);
 
-var spotify = new Spotify({
-    id: 'akonenkamp',
-    secret: '3Xy217589?'
-});
 
-spotify
-    .search({ type: 'track', query: 'All the Small Things' })
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
+
