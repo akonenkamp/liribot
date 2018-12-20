@@ -30,12 +30,16 @@ function spotify(input) {
         input = "the sign";
     }
 
-    spotify.search({ type: 'track', query: input}, function (err, data) {
+    spotify.search({ type: 'track', query: input }, function (err, data) {
         if (err) {
-            return console.log('Error occurred: ' + err);
+            console.log('Error occurred: ' + err);
+            return;
         }
-
-        console.log(data);
+        var songInfo = data.tracks.items;
+        console.log("Artists(s):"+ songInfo[0].artists[0].name);
+        console.log("Song Name: " + songInfo[0].name);
+        console.log("Preview Link: " + songInfo[0].preview_url);
+        console.log("Album: " + songInfo[0].album.name);
     });
 
 }
